@@ -1,17 +1,12 @@
 import path from "node:path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
-export default{
-    mode: "development",
+export default {
     entry: "./src/index.js",
     output: {
         filename: "main.js",
         path: path.resolve(import.meta.dirname, "dist"),
         clean: true,
-    },
-    devtool: "eval-source-map",
-    devServer: {
-        watchFiles: ["./src/index.html"],
     },
     plugins: [
         new HtmlWebpackPlugin({
@@ -20,7 +15,7 @@ export default{
     ],
     module: {
         rules: [
-             {
+            {
                 test: /\.css$/i,
                 use: ["style-loader", "css-loader"],
             },
@@ -32,10 +27,10 @@ export default{
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: "asset/resource",
             },
-             {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
-      },
+            {
+                test: /\.(woff|woff2|eot|ttf|otf)$/i,
+                type: "asset/resource",
+            },
         ],
     },
 };
